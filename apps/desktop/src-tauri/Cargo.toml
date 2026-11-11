@@ -1,0 +1,30 @@
+[package]
+name = "sastra-desktop"
+description = "Sastra: patronaje, tallaje y fichas técnicas"
+authors = ["amartfpro"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[lib]
+# El sufijo `_lib` evita un conflicto de nombres con el binario en Windows
+# (https://github.com/rust-lang/cargo/issues/8519).
+name = "sastra_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "sastra"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+sastra-core.workspace = true
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+serde.workspace = true
+serde_json.workspace = true

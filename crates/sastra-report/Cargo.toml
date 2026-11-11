@@ -1,0 +1,19 @@
+[package]
+name = "sastra-report"
+description = "Generación de la ficha técnica en PDF con Typst"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+typst = "0.15"
+typst-layout = "0.15"
+typst-pdf = "0.15"
+typst-assets = { version = "0.15", features = ["fonts"] }
+comemo = "0.5"
+serde_json.workspace = true
+
+[dev-dependencies]
+image = { version = "0.25", default-features = false, features = ["png"] }

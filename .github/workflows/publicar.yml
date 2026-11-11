@@ -1,0 +1,47 @@
+# Publica una versión descargable al crear una etiqueta como v0.1.0.
+# El instalador aparece en la página «Releases» del repositorio.
+name: Publicar versión
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    name: Instalador de Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: apps/desktop/pnpm-lock.yaml
+
+      - name: Dependencias de la interfaz
+        working-directory: apps/desktop
+        run: pnpm install --frozen-lockfile
+
+      - name: Compilar y publicar
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: apps/desktop
+          tagName: ${{ github.ref_name }}
+          releaseName: "Sastra ${{ github.ref_name }}"
+          releaseBody: |
+            Instalador para Windows 10 y 11: descarga el archivo `.exe` de la lista de abajo.
+
+            Windows puede avisar de que el instalador no está firmado. Pulsa «Más información» y luego «Ejecutar de todas formas».
+          releaseDraft: false
+          prerelease: true

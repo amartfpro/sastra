@@ -1,0 +1,19 @@
+# Compilación
+/target/
+node_modules/
+dist/
+
+# Tauri
+apps/desktop/src-tauri/gen/schemas/
+
+# Proyectos de prueba creados al desarrollar
+*.sastra
+!samples/**/*.sastra
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log

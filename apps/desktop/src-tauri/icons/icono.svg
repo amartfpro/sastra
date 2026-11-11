@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Icono de Sastra: un hilo que dibuja una «S» atravesando una aguja. -->
+  <rect x="64" y="64" width="896" height="896" rx="200" fill="#2f4a3f"/>
+  <path d="M676 300 C 620 228, 380 222, 352 360 C 322 508, 690 500, 670 664 C 650 818, 392 812, 340 724"
+        fill="none" stroke="#f3eee4" stroke-width="64" stroke-linecap="round"/>
+  <path d="M352 360 C 322 508, 690 500, 670 664" fill="none" stroke="#f3eee4" stroke-width="64"
+        stroke-linecap="round" stroke-dasharray="1 106"/>
+  <g transform="rotate(-38 704 300)">
+    <rect x="690" y="140" width="28" height="330" rx="14" fill="#d8b46a"/>
+    <rect x="698" y="162" width="12" height="54" rx="6" fill="#2f4a3f"/>
+  </g>
+</svg>
